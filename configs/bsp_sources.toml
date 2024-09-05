@@ -1,3 +1,9 @@
+[common]
+    atf_srcuri = "https://git.trustedfirmware.org/TF-A/trusted-firmware-a.git"
+    optee_srcuri = "https://github.com/OP-TEE/optee_os.git"
+    uboot_srcuri = "https://git.ti.com/git/ti-u-boot/ti-u-boot.git"
+    linux_fw_srcuri = "https://git.ti.com/git/processor-firmware/ti-linux-firmware.git"
+
 [09.02.00.010]
     atf_srcrev = "00f1ec6b8740ccd403e641131e294aabacf2a48b"
     optee_srcrev = "012cdca49db398693903e05c42a254a3a0c0d8f2"

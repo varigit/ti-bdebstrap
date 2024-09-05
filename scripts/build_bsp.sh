@@ -25,12 +25,10 @@ bsp_version=$3
         cd ${topdir}/build/${build}/bsp_sources
         log ">> atf: not found. cloning .."
         atf_srcrev=($(read_bsp_config ${bsp_version} atf_srcrev))
+        atf_srcuri=($(read_bsp_config ${bsp_version} atf_srcuri))
 
-        git clone https://git.trustedfirmware.org/TF-A/trusted-firmware-a.git &>>"${LOG_FILE}"
+        git_clone_repo ${atf_srcuri} ${atf_srcrev}
 
-        cd trusted-firmware-a
-        git checkout ${atf_srcrev} &>>"${LOG_FILE}"
-        cd ..
         log ">> atf: cloned"
     else
         log ">> atf: available"
@@ -41,8 +39,9 @@ bsp_version=$3
         cd ${topdir}/build/${build}/bsp_sources
         log ">> optee_os: not found. cloning .."
         optee_srcrev=($(read_bsp_config ${bsp_version} optee_srcrev))
+        optee_srcuri=($(read_bsp_config ${bsp_version} optee_srcuri))
 
-        git clone https://github.com/OP-TEE/optee_os.git &>>"${LOG_FILE}"
+        git_clone_repo ${optee_srcuri} ${optee_srcrev}
 
         cd optee_os
         git checkout ${optee_srcrev} &>>"${LOG_FILE}"
@@ -57,11 +56,9 @@ bsp_version=$3
         cd ${topdir}/build/${build}/bsp_sources
         log ">> ti-u-boot: not found. cloning .."
         uboot_srcrev=($(read_bsp_config ${bsp_version} uboot_srcrev))
-        git clone \
-            https://git.ti.com/git/ti-u-boot/ti-u-boot.git \
-            -b ${uboot_srcrev} \
-            --single-branch \
-            --depth=1 &>>"${LOG_FILE}"
+        uboot_srcuri=($(read_bsp_config ${bsp_version} uboot_srcuri))
+
+        git_clone_repo ${uboot_srcuri} ${uboot_srcrev}
         log ">> ti-u-boot: cloned"
         if [ -d ${topdir}/patches/ti-u-boot ]; then
             log ">> ti-u-boot: patching .."
@@ -78,11 +75,9 @@ bsp_version=$3
         cd ${topdir}/build/${build}/bsp_sources
         log ">> ti-linux-firmware: not found. cloning .."
         linux_fw_srcrev=($(read_bsp_config ${bsp_version} linux_fw_srcrev))
-        git clone \
-            https://git.ti.com/git/processor-firmware/ti-linux-firmware.git \
-            -b ${linux_fw_srcrev} \
-            --single-branch \
-            --depth=1 &>>"${LOG_FILE}"
+        linux_fw_srcuri=($(read_bsp_config ${bsp_version} linux_fw_srcuri))
+
+        git_clone_repo ${linux_fw_srcuri} ${linux_fw_srcrev}
         log ">> ti-linux-firmware: cloned"
     else
         log ">> ti-linux-firmware: available"
@@ -151,3 +146,25 @@ machine=$1
 	esac
 }
 
+git_clone_repo() {
+	srcuri="$1"
+	srcrev="$2"  # Can be a branch or a commit ID
+
+	# Save the current directory
+	original_dir=$(pwd)
+    set -x
+	# Clone the repository
+	git clone "${srcuri}" &>>"${LOG_FILE}"
+	cd "$(basename "${srcuri}" .git)" || return 1
+
+	# Try to checkout the provided srcrev (branch or commit)
+	if git checkout "${srcrev}" &>>"${LOG_FILE}"; then
+		log "Successfully checked out ${srcrev}"
+	else
+		log "Error: Failed to check out ${srcrev}"
+		cd "${original_dir}"
+		return 1
+	fi
+    set +x
+	cd "${original_dir}"
+}
