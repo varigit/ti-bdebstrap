@@ -6,6 +6,7 @@ builds = [
     "am62p-bookworm-09.02.01.010-rt",
     "am62-bookworm-09.02.01.010",
     "am62-bookworm-09.02.01.010-rt",
+    "am62-bookworm-09.02.01.010_var01",
     "am62lp-bookworm-09.02.01.010",
     "am62lp-bookworm-09.02.01.010-rt",
     "am62sip-bookworm-09.02.01.010",
@@ -34,6 +35,11 @@ builds = [
     machine = "am62xx-evm"
     bsp_version = "09.02.00.010-rt"
     distro_variant = "am62-bookworm-rt"
+
+[am62-bookworm-09.02.01.010_var01]
+    machine = "am62xx-var-som"
+    bsp_version = "09.02.00.010_var01"
+    distro_variant = "am62-bookworm-variscite"
 
 [am62lp-bookworm-09.02.01.010]
     machine = "am62xx-lp-evm"

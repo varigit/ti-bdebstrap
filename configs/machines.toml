@@ -22,6 +22,17 @@
     uboot_r5_defconfig = "am62x_evm_r5_defconfig"
     uboot_a53_defconfig = "am62x_evm_a53_defconfig"
 
+[am62xx-var-som]
+    # device config
+    hostname = "am62x-var-som"
+    # u-boot config
+    atf_target_board = "lite"
+    atf_make_args="K3_PM_SYSTEM_SUSPEND=1"
+    optee_platform = "k3-am62x"
+    optee_make_args = "."
+    uboot_r5_defconfig = "am62x_var_som_r5_defconfig"
+    uboot_a53_defconfig = "am62x_var_som_a53_defconfig"
+
 [am62xx-lp-evm]
     # device config
     hostname = "am62xx-lp-evm"

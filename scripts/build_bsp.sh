@@ -142,7 +142,7 @@ machine=$1
     cp ${UBOOT_DIR}/out/a53/u-boot-initial-env ${topdir}/build/${build}/tisdk-${distro}-${machine}-rootfs/etc/
 
 	case ${machine} in
-		am62pxx-evm | am62xx-evm | am62xx-lp-evm | am62xxsip-evm)
+		am62pxx-evm | am62xx-evm | am62xx-var-som | am62xx-lp-evm | am62xxsip-evm)
 			cp ${UBOOT_DIR}/tools/logos/ti_logo_414x97_32bpp.bmp.gz ${topdir}/build/${build}/tisdk-${distro}-${machine}-boot/ &>> ${LOG_FILE}
 			;;
 	esac

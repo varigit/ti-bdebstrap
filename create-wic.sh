@@ -160,7 +160,12 @@ losetup -d ${LOOPDEV}
 
 echo "Compress the image"
 cd ${BUILDPATH}/${BUILD}/
-xz -T 0 ${IMAGE}
+
+# Compress to .zst format and overwrite if file exists
+zstd -T0 -f ${IMAGE} -o ${IMAGE}.zst
+
+# Compress to .xz format and overwrite if file exists
+xz -T 0 -f ${IMAGE}
 
 echo "Cleanup"
 rm -rf ${BUILDPATH}/${BUILD}/temp

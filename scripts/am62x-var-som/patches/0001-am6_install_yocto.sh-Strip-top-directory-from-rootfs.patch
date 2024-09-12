@@ -1,0 +1,29 @@
+From 3679350020dd9cc70c518aebdce04c29a3b8ae6a Mon Sep 17 00:00:00 2001
+From: Nate Drude <nate.d@variscite.com>
+Date: Wed, 25 Sep 2024 14:16:46 -0500
+Subject: [PATCH] am6_install_yocto.sh: Strip top directory from rootfs
+
+ti-bdebstrap adds an extra directory to the rootfs that
+must be stripped before installing to eMMC.
+
+Signed-off-by: Nate Drude <nate.d@variscite.com>
+---
+ scripts/variscite/am6_install_yocto.sh | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/scripts/variscite/am6_install_yocto.sh b/scripts/variscite/am6_install_yocto.sh
+index 92f1ea3..e84ef4f 100644
+--- a/scripts/variscite/am6_install_yocto.sh
++++ b/scripts/variscite/am6_install_yocto.sh
+@@ -223,7 +223,7 @@ install_rootfs_to_emmc()
+ 	mount /dev/${EMMC_BLOCK}${PART}${ROOTFSPART} ${MOUNTDIR}
+ 
+ 	printf "Extracting files"
+-	tar --warning=no-timestamp -xpf ${IMGS_PATH}/${ROOTFS_IMAGE} -C ${MOUNTDIR} --checkpoint=.1200
++	tar --warning=no-timestamp -xpf ${IMGS_PATH}/${ROOTFS_IMAGE} -C ${MOUNTDIR} --checkpoint=.1200 --strip-components=1
+ 
+ 	# Adjust u-boot-fw-utils for eMMC on the installed rootfs
+ 	if [ -f "${MOUNTDIR}/etc/fw_env.config" ] && [ "$UPDATE_ENVTOOLS" = "yes" ]; then
+-- 
+2.43.0
+
