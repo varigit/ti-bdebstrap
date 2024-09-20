@@ -28,9 +28,11 @@ build=$1
     cd ${topdir}/build/${build}
 
     log "> Cleaning up ${build}"
+    tar --use-compress-program="zstd -T0 | pv" -cf tisdk-${distro}-${machine}-rootfs.tar.zst tisdk-${distro}-${machine}-rootfs &>>"${LOG_FILE}"
     tar --use-compress-program="pigz --best --recursive | pv" -cf tisdk-${distro}-${machine}-rootfs.tar.xz tisdk-${distro}-${machine}-rootfs &>>"${LOG_FILE}"
     rm -rf tisdk-${distro}-${machine}-rootfs
 
+    tar --use-compress-program="zstd -T0 | pv" -cf tisdk-${distro}-${machine}-boot.tar.zst tisdk-${distro}-${machine}-boot &>>"${LOG_FILE}"
     tar --use-compress-program="pigz --best --recursive | pv" -cf tisdk-${distro}-${machine}-boot.tar.xz tisdk-${distro}-${machine}-boot &>>"${LOG_FILE}"
     rm -rf tisdk-${distro}-${machine}-boot
 
