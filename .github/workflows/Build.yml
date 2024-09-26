@@ -2,7 +2,7 @@ name: Build
 
 on:
   push:
-    branches: [ "master", "dev"]
+    branches: [ "master", "dev", "dev_*"]
   pull_request:
     branches: [ "master" ]
 
@@ -22,7 +22,7 @@ jobs:
         id: prepare-builds
         run: |
           pip3 install toml-cli
-          builds=($(toml get builds --toml-path ./builds.toml | tr -d "[],'"))
+          builds=$(toml get builds --toml-path ./builds.toml | tr -d "[],'" | tr " " "\n" | grep "_var0")
           output_string="["
           for build in ${builds[@]}
           do
