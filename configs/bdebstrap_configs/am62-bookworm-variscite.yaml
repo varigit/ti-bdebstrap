@@ -80,6 +80,8 @@ mmdebstrap:
     - linux-firmware-bcm43430
     - linux-firmware-bcm4339
     - brcm-patchram-plus
+    # Install busybox for usleep function
+    - busybox
     # Test Packages
     - var-mii
     - tmux
@@ -151,4 +153,5 @@ mmdebstrap:
     - 'chroot "$1" mkdir -p /etc/systemd/system/'
     - 'upload target/resize_rootfs/resize_rootfs.service /etc/systemd/system/resize_rootfs.service'
     - '$BDEBSTRAP_HOOKS/enable-units "$1" resize_rootfs'
+    - 'chroot "$1" ln -sf /bin/busybox /bin/usleep'
 
