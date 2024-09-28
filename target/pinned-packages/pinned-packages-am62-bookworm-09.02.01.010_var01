@@ -1,0 +1,130 @@
+# Generating using `dpkg -l | grep <package> | awk '{print $3}'`
+
+Package: cryptodev-linux-dkms
+Pin: version 1.13-1
+Pin-Priority: 1001
+
+Package: ti-img-rogue-driver-am62-dkm
+Pin: version 23.3.6512818+git20240214+c89c1ef-1
+Pin-Priority: 1001
+
+Package: ti-img-rogue-driver-am62-dkms
+Pin: version 23.3.6512818+git20240214+c89c1ef-1
+Pin-Priority: 1001
+
+Package: ti-img-rogue-firmware-am62
+Pin: version 23.3.6512818+git20240131+0b9e642-1
+Pin-Priority: 1001
+
+Package: ti-img-rogue-tools-am62
+Pin: version 23.3.6512818+git20240131+0b9e642-1
+Pin-Priority: 1001
+
+Package: ti-img-rogue-umlibs-am62
+Pin: version 23.3.6512818+git20240131+0b9e642-1
+Pin-Priority: 1001
+
+Package: firmware-cnm-wave
+Pin: version 09.02.00.010-1
+Pin-Priority: 1001
+
+Package: libti-rpmsg-char
+Pin: version 0.6.6+git20240226+55a6f40-1
+Pin-Priority: 1001
+
+Package: libti-rpmsg-char-dev
+Pin: version 0.6.6+git20240226+55a6f40-1
+Pin-Priority: 1001
+
+Package: libd3dadapter9-mesa-dev
+Pin: version 22.3.5+git20240125+1be98ba8045-1
+Pin-Priority: 1001
+
+Package: libd3dadapter9-mesa
+Pin: version 22.3.5+git20240125+1be98ba8045-1
+Pin-Priority: 1001
+
+Package: libegl-mesa0
+Pin: version 22.3.5+git20240125+1be98ba8045-1
+Pin-Priority: 1001
+
+Package: libegl1-mesa
+Pin: version 22.3.5+git20240125+1be98ba8045-1
+Pin-Priority: 1001
+
+Package: libgbm1
+Pin: version 22.3.5+git20240125+1be98ba8045-1
+Pin-Priority: 1001
+
+Package: libgl1-mesa-dri
+Pin: version 22.3.5+git20240125+1be98ba8045-1
+Pin-Priority: 1001
+
+Package: libgl1-mesa-glx
+Pin: version 22.3.5+git20240125+1be98ba8045-1
+Pin-Priority: 1001
+
+Package: libglapi-mesa
+Pin: version 22.3.5+git20240125+1be98ba8045-1
+Pin-Priority: 1001
+
+Package: libgles2-mesa
+Pin: version 22.3.5+git20240125+1be98ba8045-1
+Pin-Priority: 1001
+
+Package: libglx-mesa0
+Pin: version 22.3.5+git20240125+1be98ba8045-1
+Pin-Priority: 1001
+
+Package: libosmesa6
+Pin: version 22.3.5+git20240125+1be98ba8045-1
+Pin-Priority: 1001
+
+Package: libwayland-egl1-mesa
+Pin: version 22.3.5+git20240125+1be98ba8045-1
+Pin-Priority: 1001
+
+Package: mesa-opencl-icd
+Pin: version 22.3.5+git20240125+1be98ba8045-1
+Pin-Priority: 1001
+
+Package: mesa-va-drivers
+Pin: version 22.3.5+git20240125+1be98ba8045-1
+Pin-Priority: 1001
+
+Package: mesa-vdpau-drivers
+Pin: version 22.3.5+git20240125+1be98ba8045-1
+Pin-Priority: 1001
+
+Package: mesa-vulkan-drivers
+Pin: version 22.3.5+git20240125+1be98ba8045-1
+Pin-Priority: 1001
+
+Package: libpru-pssp-dev
+Pin: version 6.3.0+git20240205+d09576fa-1
+Pin-Priority: 1001
+
+Package: pru-pssp
+Pin: version 6.3.0+git20240205+d09576fa-1
+Pin-Priority: 1001
+
+Package: firmware-ti-ipc-am62-var-som
+Pin: version 09.01.00.08-01+81dce77663841e1aea3228ee237ed4f1d6148afc-1
+Pin-Priority: 1001
+
+Package: bcm43xx-utils
+Pin: version 3154fcb-r1.0.2
+Pin-Priority: 1001
+
+Package: linux-firmware-bcm43430
+Pin: version 1:20230804-r0.arago1.0
+Pin-Priority: 1001
+
+Package: linux-firmware-bcm4339
+Pin: version 1:20230804-r0.arago1.0
+Pin-Priority: 1001
+
+Package: brcm-patchram-plus
+Pin: version 1858a94
+Pin-Priority: 1001
+

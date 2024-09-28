@@ -76,7 +76,7 @@ mmdebstrap:
     # Bluetooth Packages
     - bluez
     - bluez-tools
-    - bcm43xx-utils=3154fcb-r1.0.2
+    - bcm43xx-utils
     - linux-firmware-bcm43430
     - linux-firmware-bcm4339
     - brcm-patchram-plus
@@ -116,6 +116,8 @@ mmdebstrap:
     - 'printf "Package: *\nPin: origin varigit.github.io/\nPin-Priority: 1002" >> $1/etc/apt/preferences.d/var'
     - 'printf "Package: *\nPin: origin varigit.github.io/\nPin-Priority: 1003" >> $1/etc/apt/preferences.d/var-ti'
     - 'printf "Package: *\nPin: origin varigit.github.io/\nPin-Priority: 1004" >> $1/etc/apt/preferences.d/am62x-var-som'
+      # Pin packages to a specific version
+    - 'upload target/pinned-packages/pinned-packages-am62-bookworm-09.02.01.010_var01 /etc/apt/preferences.d/pinned-packages'
       # Setup Kernel post-install scripts
     - 'mkdir -p $1/etc/kernel/postinst.d/'
     - 'echo "PWD = $PWD"'
