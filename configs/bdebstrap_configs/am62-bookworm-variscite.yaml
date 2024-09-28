@@ -99,6 +99,7 @@ mmdebstrap:
     - ssh-askpass
     - xterm
     - u-boot-tools
+    - libubootenv-tool
     - swupdate
   mirrors:
     - http://deb.debian.org/debian
