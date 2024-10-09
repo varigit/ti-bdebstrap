@@ -14,7 +14,7 @@
     atf_srcrev = "00f1ec6b8740ccd403e641131e294aabacf2a48b"
     optee_srcrev = "012cdca49db398693903e05c42a254a3a0c0d8f2"
     uboot_srcuri = "https://github.com/varigit/ti-u-boot.git"
-    uboot_srcrev = "38aba07a3111eb8e8894d925efd817041b22524e"
+    uboot_srcrev = "80ceb4d91326e00edd22a3fabf5dd2d64f6a7635"
     linux_fw_srcrev = "09.02.00.010"
 
 [09.02.00.010-rt]
