@@ -93,7 +93,7 @@ else
 fi
 
 echo "Creating an empty image"
-dd if=/dev/zero of=${BUILDPATH}/${BUILD}/${IMAGE} count=6291456 status=progress
+dd if=/dev/zero of=${BUILDPATH}/${BUILD}/${IMAGE} bs=1024M count=6 status=progress
 sync ; sync
 
 cat << END | fdisk ${BUILDPATH}/${BUILD}/${IMAGE}
