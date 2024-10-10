@@ -83,6 +83,7 @@ mmdebstrap:
     # Install busybox for usleep function
     - busybox
     # Test Packages
+    - pm-utils
     - var-mii
     - tmux
     - docker.io
