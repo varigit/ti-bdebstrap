@@ -159,9 +159,9 @@ mmdebstrap:
     - '$BDEBSTRAP_HOOKS/enable-units "$1" resize_rootfs'
     - 'chroot "$1" ln -sf /bin/busybox /bin/usleep'
       # Overlay target/variscite first
-    - 'rsync -a target/variscite/ "$1/"'
+    - 'rsync -a target/overlay-variscite/ "$1/"'
       # Overlay target/am62x-var-som, which has higher priority
-    - 'rsync -a target/am62x-var-som/ "$1/"'
+    - 'rsync -a target/overlay-am62x-var-som/ "$1/"'
       # Update issue and issue.net
     - 'echo "2024 Variscite, Ltd." >> "$1/etc/issue"'
     - 'echo "2024 Variscite, Ltd." >> "$1/etc/issue.net"'
