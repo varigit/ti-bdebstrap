@@ -1,0 +1,5 @@
+[Match]
+OriginalName=can0
+
+[Link]
+Name=main_mcan0
