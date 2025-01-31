@@ -165,8 +165,10 @@ mmdebstrap:
     - 'upload target/resize_rootfs/resize_rootfs.service /etc/systemd/system/resize_rootfs.service'
     - '$BDEBSTRAP_HOOKS/enable-units "$1" resize_rootfs'
     - 'chroot "$1" ln -sf /bin/busybox /bin/usleep'
+    - 'chroot "$1" rm -rf /usr/lib/pm-utils/sleep.d'
       # Overlay target/variscite first
-    - 'rsync -a target/overlay-variscite/ "$1/"'
+    - 'rsync -a --chown=root:root target/overlay-variscite/ "$1/"'
+    - 'chroot "$1" find /etc/pm -type f -exec chmod a+x {} \;'
       # Overlay target/am62x-var-som, which has higher priority
       #TODO remove the below line after creating the folder overlay-am62x-var-som
       # 'rsync -a target/overlay-am62x-var-som/ "$1/"'
