@@ -24,5 +24,8 @@ case $1 in
                 killall -9 wpa_supplicant
                 systemctl restart connman.service
         fi
+        if [ -f /etc/systemd/system/multi-user.target.wants/wpa_supplicant.service ]; then
+                systemctl restart wpa_supplicant.service
+	fi
         ;;
 esac
