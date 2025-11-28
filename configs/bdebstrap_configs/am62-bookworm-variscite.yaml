@@ -118,7 +118,7 @@ mmdebstrap:
   setup-hooks:
       # Setup TI Debian Package Repository
     - 'mkdir -p $1/etc/apt/sources.list.d/'
-    - 'wget https://raw.githubusercontent.com/TexasInstruments/ti-debpkgs/main/ti-debpkgs.sources -P $1/etc/apt/sources.list.d/'
+    - 'wget https://raw.githubusercontent.com/TexasInstruments/ti-debpkgs/f142f9c0660d31712ef858d6bd6c2f8257903772/ti-debpkgs.sources -P $1/etc/apt/sources.list.d/'
     - 'echo "deb [trusted=yes] https://varigit.github.io/var-debpkgs/var bookworm main" | sudo tee $1//etc/apt/sources.list.d/var.list'
     - 'echo "deb [trusted=yes] https://varigit.github.io/var-debpkgs/var-ti bookworm main" | sudo tee $1//etc/apt/sources.list.d/var-ti.list'
     - 'echo "deb [trusted=yes] https://varigit.github.io/var-debpkgs/am62x-var-som bookworm main" | sudo tee $1//etc/apt/sources.list.d/am62x-var-som.list'
