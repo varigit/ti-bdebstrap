@@ -68,6 +68,11 @@ jobs:
           mkdir -p build
           sudo ./build.sh ${{ matrix.builds }}
 
+      - name: Remove unused tar archives
+        run: |
+          # Drop the unused tarball in build/ to free space for the .wic
+          sudo rm build/${{ matrix.builds }}.tar.xz
+
       - name: Create ${{ matrix.builds }} wic image
         run: |
           sudo ./create-wic.sh ${{ matrix.builds }}
@@ -76,7 +81,7 @@ jobs:
         if: ${{ github.event.repository.private == false }}
         uses: actions/upload-artifact@v3.1.2
         with:
-          path: build/${{ matrix.builds }}.tar.xz
+          path: build/${{ matrix.builds }}/*.wic.zst
           name: ${{ matrix.builds }}
           if-no-files-found: error
 
