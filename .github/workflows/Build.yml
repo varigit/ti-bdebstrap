@@ -68,6 +68,10 @@ jobs:
           mkdir -p build
           sudo ./build.sh ${{ matrix.builds }}
 
+      - name: Create ${{ matrix.builds }} wic image
+        run: |
+          sudo ./create-wic.sh ${{ matrix.builds }}
+
       - name: Upload ${{ matrix.builds }}
         if: ${{ github.event.repository.private == false }}
         uses: actions/upload-artifact@v3.1.2
