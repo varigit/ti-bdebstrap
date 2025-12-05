@@ -40,6 +40,15 @@ jobs:
         builds: ${{ fromJson(needs.prepare-build.outputs.builds) }}
     name: ${{ matrix.builds }}
     steps:
+      - name: Setup workspace on GitHub-hosted runner using /mnt with more storage
+        if: ${{ !contains(runner.labels, 'self-hosted') }}
+        run: |
+          echo "Redirecting workspace to /mnt/work"
+          sudo mkdir -p /mnt/work
+          sudo rm -rf "$GITHUB_WORKSPACE"
+          sudo ln -s /mnt/work "$GITHUB_WORKSPACE"
+          sudo chown -R $USER:$USER /mnt/work
+
       - name: Checkout
         uses: actions/checkout@v3
 
