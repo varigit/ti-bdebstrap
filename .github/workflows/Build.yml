@@ -2,9 +2,9 @@ name: Build
 
 on:
   push:
-    branches: [ "master", "dev", "dev_*"]
+    branches: [ "master", "bookworm_09.02.01.10_var01", "dev", "dev_*"]
   pull_request:
-    branches: [ "master" ]
+    branches: [ "master", "bookworm_09.02.01.10_var01" ]
 
   workflow_dispatch:
 
